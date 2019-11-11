@@ -15,7 +15,8 @@ public class ScannerInputValidation {
     public static final Scanner SC = new Scanner(System.in);//initialise public Scanner and give it the name SC
     
     public static void main(String[] args) {
-        stringCheck();
+        regExCheck();
+//        stringCheck();
 //        positiveInt();
     }
     
@@ -46,5 +47,16 @@ public class ScannerInputValidation {
         System.out.println("We have a match " + string);
     }//end of stringCheck
     
+        public static void regExCheck() {//will check for regular expression
+        System.out.println("Please enter a sentance");
+        
+        while(!SC.hasNext("[willCheckForAnyLettersInHere]")){
+            System.out.println("No matches Found");
+            SC.nextLine();//advances Scanner to next line. hasNext will not advance to next line so program will get caught in loop
+        }//end of while loop
+        
+        String string = SC.nextLine();
+        System.out.println("We have a match " + string);
+    }//end of stringCheck
     
 }
