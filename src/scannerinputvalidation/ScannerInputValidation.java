@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author MC03353
  */
 public class ScannerInputValidation {
-    public static final Scanner SC = new Scanner(System.in);//initialise public Scanner and give it the name SC
+    private static final Scanner SC = new Scanner(System.in);//initialise public Scanner and give it the name SC
     
     public static void main(String[] args) {
 //        regExCheck();
@@ -22,7 +22,37 @@ public class ScannerInputValidation {
 //        nextFloat();
 //        nextBoolean();
 //        nextByte();
+        test();
+
     }
+    
+    public static void test(){//start of method
+//        Write a short program which asks a user for 10 ages (ints), stores 
+//        them and returns the average (double).
+
+        //declare variable int for user age
+        int iInput = 0, iAge = 0, iCount = 0;
+        
+        //declare double for average age 
+        double dAverage;
+        
+            do { //do while loop runs code before condition check
+                System.out.println("Enter " + (10-iCount) + " age(s)"); //user prompt
+                               
+                while((!SC.hasNextInt() && (iInput < 0) || (iInput > 120))){        //checks user input
+                    System.out.println("Must be an integer between 0 and 120");     //to make sure its 
+                    SC.next();                                                      //an integer
+                }
+                
+                iInput = SC.nextInt();
+                iAge += iInput; //adds value of user input to iAge
+                iCount++; //adds +1 to counter
+            }while(iCount < 10); //checks counter to make sure less than 10
+            
+            dAverage = iAge/iCount;
+            
+        System.out.print("Average is: " + dAverage + "\n");    
+    }//end of method
     
     public static void positiveInt(){ //public access, static so we can call it in the main (above), void because we aren't expacting a return type
         int num; //declare an int called number
@@ -67,9 +97,11 @@ public class ScannerInputValidation {
         double num;
         
         System.out.print("Enter a double: ");
+       
         while (!SC.hasNextDouble()) {//while Scanners input is not a decimal
                 System.out.println("Must be a decimal number");//
                 SC.next();//advances Scanner to next line. hasNext will not advance to next line so program will get caught in loop
+        
         }
         num = SC.nextDouble();
 
